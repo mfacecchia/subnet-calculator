@@ -8,7 +8,7 @@
 <hr>
 
 ## Who are we?
-Me (Marco) and Beatrice are two Italian Software Development & CyberSecurity Students who started studying Python recently and wanted to test our skills out and develop a real world like assignment.
+We are two Italian Software Development & CyberSecurity Students who started studying Python recently and wanted to test our skills out and develop a real world like assignment.
 
 ## What's This Project?
 This project aims to create multiple Subnets based on a starting user-input Network value, calculating the relative Subnet Mask, Gateway, Broadcast and all the relative Hosts.
