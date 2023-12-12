@@ -32,9 +32,10 @@ def checkNetworkClass(network, subnetMask):
                 print("Valid Network") 
                 return [True]
         else:
-            print("Invalid Network")
-            #Returns the class name as well as the expected subnet mask value for that class
-            return [nwClassName, nwClassRange[1]]
+            continue
+    print("Invalid Network")
+    #Returns the class name as well as the expected subnet mask value for that class
+    return [nwClassName, nwClassRange[1]]
             
 
 def changeNetworkAndSubnet(network, subnetMask, nwClass):
@@ -80,11 +81,11 @@ def subnetDataInput(subnetMask):
         try:
             #Checks if the hosts number is already input, otherwise the program will ask the user to input it
             if(not isinstance(totalHosts, int)):
-                totalHosts = int(input(f"\nQuanti host vuoi inserire in totale nella rete (min 1 max {(2 ** (subnetMask.count(0) * 8)) - 1})? "))
+                totalHosts = int(input(f"\nQuanti host vuoi inserire in totale nella rete (min 1 max {(2 ** (subnetMask.count(0) * 8)) - 3})? "))
                 #Checks if the total hosts number input is correct (it cannot exceed a value expected by the network which is 2^n)
-                while(totalHosts < 1 or totalHosts > ((2 ** (subnetMask.count(0) * 8)) - 1)):
+                while(totalHosts < 1 or totalHosts > ((2 ** (subnetMask.count(0) * 8)) - 3)):
                     totalHosts = None
-                    totalHosts = int(input(f"\nInserisci un numero di host valido tra 1 e {(2 ** (subnetMask.count(0) * 8)) - 1}: "))
+                    totalHosts = int(input(f"\nInserisci un numero di host valido tra 1 e {(2 ** (subnetMask.count(0) * 8)) - 3}: "))
             #Same checks but for the number of subnets
             if(not isinstance(subnetNumber, int)):
                 subnetNumber = int(input(f"\nQuante sottoreti vuoi creare (min 1 max {255 * subnetMask.count(0)})? "))
