@@ -8,13 +8,15 @@
 <hr>
 
 ## Who are we?
-We are two Italian Software Development & CyberSecurity Students who started studying Python recently and wanted to test our skills out and develop a real world like assignment.
+We are two Italian Software Development & CyberSecurity Students who recently started studying Python and wanted to test our skills out and develop a real world like assignment.
 
 ## What's This Project?
-This project aims to create multiple Subnets based on a starting user-input Network value, calculating the relative Subnet Mask, Gateway, Broadcast and all the relative Hosts.
+This project aims to be a useful tool to quickly create multiple Subnets based on a starting user-input Network value, calculating the relative Subnet Mask, Gateway, Broadcast and all the relative Hosts.
 
 ## Who is this for?
-This project can be used by Networking & IT newbies to learn and understand the functioning of Networks and Subnets as well as those who are already experienced and wants to accelerate their Networks creation and management workflow.
+This project can be helpful for Networking & IT newbies to learn and understand Networks and Subnets  basics as well as those who are already experienced and wants to enhance their Networks creation and management workflow.
+
+<hr>
 
 ### Follow me!
 
