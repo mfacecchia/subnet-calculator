@@ -40,17 +40,17 @@ def checkNetworkClass(network, subnetMask):
 
 def changeNetworkAndSubnet(network, subnetMask, nwClass):
     '''Lets the user change Network IP or Subnet Mask'''
-    print(f"\nLa subnet mask {'.'.join(map(str, subnetMask))} inserita non coincide con la subnet mask di classe {nwClass[0]} per la rete {'.'.join(map(str, network))} (subnet mask {'.'.join(map(str, nwClass[1]))}).")
+    print(f"\nThe Subnet Mask {'.'.join(map(str, subnetMask))} input does not match with the {nwClass[0]} class Subnet Mask for the Network {'.'.join(map(str, network))} (Subnet Mask {'.'.join(map(str, nwClass[1]))}).")
     
-    newNetAndSubnet = input("\n\nInserisci un indirizzo IP e Subnet Mask valido: ").replace(' ', '.').split('.')
+    newNetAndSubnet = input("\n\nPlease input valid IP Address and Subnet Mask values: ").replace(' ', '.').split('.')
     #With the `split()` function, the list expects 8 items, if it's longer or shorter, the value input is not correct and has to try again
     while(len(newNetAndSubnet) != 8):
-        print("\nInput Errato...")
-        newNetAndSubnet = input("Inserisci un valore valido: ").replace(' ', '.').split('.')
+        print("\nWrong input...")
+        newNetAndSubnet = input("Input some valid IP Address and Subnet Mask values: ").replace(' ', '.').split('.')
     
     #Checking again if the network IP and Subnet Mask values are correctly input
     while(checkNetworkValue(newNetAndSubnet) == False):
-        newNetAndSubnet = input("La rete inserita contiene dei valori non validi (minore di 0 e/o maggiore di 255) o è stato inserito un valore errato, riprova: ").replace(' ', '.').split('.')
+        newNetAndSubnet = input("The Network input contains invalid values (lower than 0 and/or higher than 255) or wrong values were input, please try again: ").replace(' ', '.').split('.')
 
     newNet = newNetAndSubnet[:4]
     newSubnet = newNetAndSubnet[4:]
@@ -81,19 +81,19 @@ def subnetDataInput(subnetMask):
         try:
             #Checks if the hosts number is already input, otherwise the program will ask the user to input it
             if(not isinstance(totalHosts, int)):
-                totalHosts = int(input(f"\nQuanti host vuoi inserire in totale nella rete (min 1 max {(2 ** (subnetMask.count(0) * 8)) - 3})? "))
+                totalHosts = int(input(f"\nInput the total number of hosts you expect to have in your Network (min 1 max {(2 ** (subnetMask.count(0) * 8)) - 3}): "))
                 #Checks if the total hosts number input is correct (it cannot exceed a value expected by the network which is 2^n)
                 while(totalHosts < 1 or totalHosts > ((2 ** (subnetMask.count(0) * 8)) - 3)):
                     totalHosts = None
-                    totalHosts = int(input(f"\nInserisci un numero di host valido tra 1 e {(2 ** (subnetMask.count(0) * 8)) - 3}: "))
+                    totalHosts = int(input(f"\nPlease input a valid number of hosts between 1 and {(2 ** (subnetMask.count(0) * 8)) - 3}: "))
             #Same checks but for the number of subnets
             if(not isinstance(subnetNumber, int)):
-                subnetNumber = int(input(f"\nQuante sottoreti vuoi creare (min 1 max {255 * subnetMask.count(0)})? "))
+                subnetNumber = int(input(f"\nHow many subnets do you want to create (min 1 max {255 * subnetMask.count(0)})? "))
                 while(subnetNumber < 1 or subnetNumber > (255 * subnetMask.count(0))):
                     subnetNumber = None
-                    subnetNumber = int(input(f"\nInserisci un numero di sottoreti valido tra 1 e {255 * subnetMask.count(0)}: "))
+                    subnetNumber = int(input(f"\nPlease input a valid subnets value between 1 and {255 * subnetMask.count(0)}: "))
         except ValueError:
-            print("Input errato...")
+            print("Wrong input...")
         else:
             break
     return([totalHosts, subnetNumber])
@@ -101,16 +101,16 @@ def subnetDataInput(subnetMask):
 
 def main():
 
-    network = input("Inserisci la rete di partenza (non suddivisa) che vuoi scomporre in sottoreti e la subnet mask separati da uno spazio: ").replace(' ', '.').split('.')
+    network = input("Input the beginning Network (not yet subdivided) that you want to divide in Subnets, as well as the Network's Subnet Mask (separated by a space): ").replace(' ', '.').split('.')
 
     #With the `split()` function, the list expects 8 items, if it's longer or shorter, the value input is not correct and has to try again
     while(len(network) != 8):
-        print("\nInput errato...")
-        network = input("Inserisci la rete che vuoi scomporre in sottoreti e la subnet mask separati da uno spazio: ").replace(' ', '.').split('.')
+        print("\nWrong input...")
+        network = input("Please input the Network that you want to subdivide and the Network's Subnet Mask value (separated by a space): ").replace(' ', '.').split('.')
 
     #Checking if the IP and Subnet Mask network values are correctly input to proceed
     while(checkNetworkValue(network) == False):
-        network = input("La rete o la subnet mask inserita contengono valori non validi (minore di 0 e/o maggiore di 255) o è stato inserito un valore errato, riprova: ").replace(' ', '.').split('.')
+        network = input("The Network or the Subnet Mask value contain unsupported values (lower than 0 and/or higher than 255) or a wrong value was input, please try again: ").replace(' ', '.').split('.')
 
     #Moving the subnet mask data to a dedicated list and deleting it from the network dedicated list
     subnetMask = network[4:]
